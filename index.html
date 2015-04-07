@@ -9,7 +9,7 @@ body{background-color: #08c;}*{margin: 0;padding: 0;-moz-box-sizing:content-box;
 #main_content .main_content_wrap h2{font-family: serif;font-size: 250%;text-align: center;border-bottom: 1px solid #0af;}#main_content .main_content_wrap h4{margin: 16px 18px;text-align: justify;font-size: 110%;}#main_content .main_content_wrap .chained-quiz{color: #D9F5FF;max-width: 95vw;margin: auto;max-height: 97vh;overflow: auto;}#main_content .main_content_wrap .chained-quiz-question{}#main_content .main_content_wrap .chained-quiz-choices{}#main_content .main_content_wrap .chained-quiz-choice label, #main_content .main_content_wrap #submit-info{background:#fff;color: #000;margin: 12px auto;padding: 7px;font-size: 17px;text-align: center;cursor: pointer; -o-border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px;-o-box-shadow: 0px 1px 1px 3px #0af;-moz-box-shadow: 0px 1px 1px 3px #0af;-webkit-box-shadow: 0px 1px 1px 3px #0af;box-shadow: 0px 1px 1px 3px #0af;display: block;max-width:88%;}#main_content .main_content_wrap .chained-quiz-choice label:hover, #main_content .main_content_wrap #submit-info:hover{background: #D9F5FF;}#main_content .main_content_wrap #email, #main_content .main_content_wrap #name, #main_content .main_content_wrap #phone {display: block;max-width: 88%;margin: 7px auto;}#main_content .main_content_wrap .chained-quiz-label{}#main_content .main_content_wrap .chained-quiz-radio{visibility: hidden;width: 0;}#main_content .main_content_wrap .chained-quiz-action{display: none;}#main_content .main_content_wrap .chained-quiz-action > input{}input#visitorName,  input#visitoremail,  input#visitorPhone {display: block;border: 1px solid #ccc;border-radius: 3px;padding: 5px;margin: 5px auto;width: 250px;}textarea.chained-quiz-frontend {width: 0;height: 0;overflow: hidden;visibility: hidden;}.no-transition{ -o-transition: all 0 linear 0; -moz-transition: all 0 linear 0; -webkit-transition: all 0 linear 0; transition: all 0 linear 0;}iframe#prods_frame{display:none;position:fixed;top:0;right:0;bottom:0;left:0;}@media only screen and (max-height: 520px){#main_content .main_content_wrap .chained-quiz-choice label{font-size:14px;line-height: 1.25;}#main_content{ top:50%;}.awesome-container{top: 50%;}.info{top:0;background:rgba(0,0,0,0.7);}.info h4{font-size:140%;}.info p{font-size:88%;}}</style>
   <div class="screen">
   <div class='awesome-wrap'>
-<div class='awesome-container'> <div class="line line1"><div class="point_wrap point_wrap1" ><div class="point point1"><img src="img/img1.jpg"></div><div class='info'><div><h4> Interactive Designing </h4><p> Turn more visitors into client by a website that talks. </p></div></div></div><div class="line line2"><div class="point_wrap point_wrap2" ><div class="point point2"><img src="img/img2.jpg"></div><div class='info'><h4> Presentation Websites </h4><p> YOYO You, your organization or your idea presented creating that first impression that lasts forever. </p></div></div><div class="line line3"><div class="point_wrap point_wrap3" ><div class="point point3"><img src="img/img3.jpg"></div><div class='info'><div><h4> eCommerce </h4><p> Get ready your money making machine and learn how to get it successful. </p></div></div></div></div></div></div> </div>  </div>
+<div class='awesome-container'> <div class="line line1"><div class="point_wrap point_wrap1" ><div class="point point1"><img src="img/img1.jpg"></div><div class='info'><div><h4> Interactive Designing </h4><p> Turn more visitors into client by a website that talks. </p></div></div></div><div class="line line2"><div class="point_wrap point_wrap2" ><div class="point point2"><img src="img/img2.jpg"></div><div class='info'><div><h4> Presentation Websites </h4><p> You, your organization or your idea presented creating that first impression that lasts forever. </p></div></div></div><div class="line line3"><div class="point_wrap point_wrap3" ><div class="point point3"><img src="img/img3.jpg"></div><div class='info'><div><h4> eCommerce </h4><p> Get ready your money making machine and learn how to get it successful. </p></div></div></div></div></div></div> </div>  </div>
   </div>
 <!--Scripts-->
   <script type="text/javascript">
@@ -78,7 +78,7 @@ jQuery(document).ready(function($){
 				borderWidth:'75px',
 				width:'150px',
 				height:'150px',
-			}, 0.5 * 700, "linear",
+			}, 0.5*700, "linear",
 				/*Callback function*/
 				function(){
 					var that = $(this);
@@ -87,10 +87,10 @@ jQuery(document).ready(function($){
 			.animate({
 				width:'300px',
 				height:'300px',
-			}, 490, "linear")
+			}, 0.7*700, "linear")
 			.animate({
 				borderWidth:'5px'
-			}, 490, "linear", function(){
+			}, 0.7*700, "linear", function(){
 				var that = $(this);
 				present_info(that.siblings('.info'));
 			})
@@ -105,23 +105,33 @@ jQuery(document).ready(function($){
 			}, 700, "linear")
 			.animate({
 				borderWidth:'75px',
-			}, 350, "linear")
+			}, 0.5*700, "linear")
 			.animate({
 				width:'150px',
 				height:'150px',
-			}, 350, "linear", function(){$(this).find('img').css('display', 'block')})
+			}, 0.5*700, "linear", function(){$(this).find('img').css('display', 'block')})
 			.animate({
 				borderWidth:'35px',
 				width:'0',
 				height:'0',
-			}, 350, "linear", function(){if (current_pont > (total_ponts-1)) {qa_section_animate(current_pont);};});
+			}, 0.5*700, "linear", function(){if (current_pont > (total_ponts-1)) {qa_section_animate(current_pont);};});
 	}
 
 	function present_info(that){
 		that.animate({opacity: '1'}, 700, 'linear');
 		that.addClass('showinfo');
 	}
-
+	
+	function qa_section_animate(num){
+		$.ajax({
+			type: "GET",
+			url: "?get_post_ajax&post=2",
+		})
+		 .done(function( msg ) {
+			 $('.main_content_wrap').html( '<div class="center-wrap">'+msg+'</div>' );
+		});
+		
+		
 		line[1].addClass('no-transition').fadeTo(250, 0, function(){
 			setTimeout(function(){
 				main_content.addClass('active');
