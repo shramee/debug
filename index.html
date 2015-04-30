@@ -1,12 +1,31 @@
-			<p>
-				<label for="<?php echo $this->get_field_id( 'origin_style_'.$id ) ?>"><?php printf( __( '%s Style', 'siteorigin-panels' ), $sub[0] ) ?></label>
-				<select name="<?php echo $this->get_field_name( 'origin_style_'.$id ) ?>" id="<?php echo $this->get_field_id( 'origin_style_'.$id ) ?>">
-					<?php foreach( $the_widget->get_styles() as $style_id => $style_info ) : $presets = $the_widget->get_style_presets( $style_id ); ?>
-						<?php if ( ! empty( $presets ) ) : foreach( $presets as $preset_id => $preset ) : ?>
-							<option value="<?php echo esc_attr( $style_id.':'.$preset_id ) ?>" <?php selected( $style_id.':'.$preset_id, $instance['origin_style_'.$id] ) ?>>
-								<?php echo esc_html( $style_info['Name'].' - ' . ucwords( str_replace( '_', ' ', $preset_id ) ) ) ?>
-							</option>
-						<?php endforeach; endif; ?>
-					<?php endforeach ?>
-				</select>
-			</p>
+		public function get_border_color_control() {
+108		
+			// Variables used in view
+109		
+			$value		 = $this->value( 'border_color' );
+110		
+			$default_color = $this->default['border_color'];
+111		
+			$current_color = isset( $value ) ? $value : $default_color;
+112		
+113		
+			// Get control view
+114		
+			?>
+115		
+			<label><?php _e( 'Border Color', 'scratch' ); ?>
+116		
+				<input class="color-picker-hex pp-font-color-text-box" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"
+117		
+					   value="<?php echo $current_color; ?>" data-default-color="<?php echo $default_color ?>"
+118		
+					<?php $this->link( 'border_color' ) ?>
+119		
+					/>
+120		
+			</label>
+121		
+122		
+		<?php
+123		
+		}
