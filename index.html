@@ -1,19 +1,19 @@
 <?php
 
 
-		public function get_border_color_control() {
+		public function get_font_color_control() {
 			// Variables used in view
-			$value		 = $this->value( 'border_color' );
-			$default_color = $this->default['border_color'];
+			$value		 = $this->value( 'font_color' );
+			$default_color = $this->default['font_color'];
 			$current_color = isset( $value ) ? $value : $default_color;
 
 			// Get control view
 			?>
-			<label><?php _e( 'Border Color', 'scratch' ); ?>
-				<input class="color-picker-hex pp-font-color-text-box" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"
+			<label><?php _e( 'Font Color', 'scratch' ); ?>
+				<input class="color-picker-hex sc-font-color-text-box" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"
 					   value="<?php echo $current_color; ?>" data-default-color="<?php echo $default_color ?>"
-					<?php $this->link( 'border_color' ) ?>
-					/>BorderControl!!!
+					<?php $this->link( 'font_color' ) ?>
+					/>
 			</label>
 
 		<?php
