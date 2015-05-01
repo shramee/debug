@@ -2,7 +2,7 @@
 
 
 
-					foreach ( $all_fonts as $k => $v ) {
+					foreach ( $font_faces as $k => $v ) {
 						$selected = '';
 						// If one of the fonts requires a test case, use that value. Otherwise, use the key as the test case.
 						if ( in_array( $k, array_keys( $test_cases ) ) ) {
@@ -10,6 +10,6 @@
 						} else {
 							$value_to_test = $k;
 						}
-						if ( _test_typeface_against_test_case( $current_value, $value_to_test ) ) $selected = ' selected="selected"';
-						echo '<option value="' . esc_attr( $k ) . '" ' . $selected . '>' . esc_html( $v ) . '</option>' . "\n";
+						if ( _test_typeface_against_test_case( $value['face'], $value_to_test ) ) $selected = ' selected="selected"';
+						$html .= '<option value="' . esc_attr( $k ) . '" ' . $selected . '>' . esc_html( $v ) . '</option>' . "\n";
 					}
