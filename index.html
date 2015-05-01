@@ -1,16 +1,15 @@
 <?php
 
 
-	protected function _test_typeface_against_test_case ( $face, $test_case ) {
-		$response = false;
 
-		$face = stripslashes( str_replace( '"', '', str_replace( '&quot;', '', $face ) ) );
-
-		$parts = explode( ',', $face );
-
-		if ( $test_case == $parts[0] ) {
-			$response = true;
-		}
-
-		return $response;
-	}
+					foreach ( $all_fonts as $k => $v ) {
+						$selected = '';
+						// If one of the fonts requires a test case, use that value. Otherwise, use the key as the test case.
+						if ( in_array( $k, array_keys( $test_cases ) ) ) {
+							$value_to_test = $test_cases[$k];
+						} else {
+							$value_to_test = $k;
+						}
+						if ( _test_typeface_against_test_case( $current_value, $value_to_test ) ) $selected = ' selected="selected"';
+						echo '<option value="' . esc_attr( $k ) . '" ' . $selected . '>' . esc_html( $v ) . '</option>' . "\n";
+					}
