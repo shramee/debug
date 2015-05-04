@@ -1,15 +1,15 @@
-<?php
+			// Variables used in view
+			$value		 = $this->value( 'font_color' );
+			$default_color = $this->default['font_color'];
+			$current_color = isset( $value ) ? $value : $default_color;
 
+			// Get control view
+			?>
+			<label><?php _e( 'Font Color', 'scratch' ); ?>
+				<input class="color-picker-hex sc-font-color-text-box" type="text" maxlength="100" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"
+					   value="<?php echo $current_color; ?>" data-default-color="<?php echo $default_color ?>"
+					<?php $this->link( 'font_color' ) ?>
+					/>
+			</label>
 
-
-					foreach ( $font_faces as $k => $v ) {
-						$selected = '';
-						// If one of the fonts requires a test case, use that value. Otherwise, use the key as the test case.
-						if ( in_array( $k, array_keys( $test_cases ) ) ) {
-							$value_to_test = $test_cases[$k];
-						} else {
-							$value_to_test = $k;
-						}
-						if ( _test_typeface_against_test_case( $value['face'], $value_to_test ) ) $selected = ' selected="selected"';
-						$html .= '<option value="' . esc_attr( $k ) . '" ' . $selected . '>' . esc_html( $v ) . '</option>' . "\n";
-					}
+			<?php
