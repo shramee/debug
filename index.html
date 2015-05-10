@@ -1,15 +1,24 @@
+
 			// Variables used in view
-			$value		 = $this->value( 'border_color' );
-			$default_color = $this->default['border_color'];
-			$current_color = isset( $value ) ? $value : $default_color;
+			$value		  = $this->value( 'top_bottom_width' );
+			$step		   = 1;
+			$min_range	  = 0;
+			$max_range	  = 100;
+			$default_amount = $this->default['top_bottom_width'];
+
+			$current_amount = isset( $value ) ? $value : $default_amount;
 
 			// Get control view
 			?>
-			<label><?php _e( 'Border Color', 'scratch' ); ?>
-				<input class="color-picker-hex font-color-text-box" type="text" maxlength="100" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"
-					   value="<?php echo $current_color; ?>" data-default-color="<?php echo $default_color ?>"
-					<?php $this->link( 'border_color' ) ?>
+			<label><?php _e( 'Top/Bottom', 'scratch' ); ?>
+
+				<input class='pp-top-bottom-width-number' type="number" min="<?php echo $min_range ?>"
+					   max="<?php echo $max_range ?>" step="<?php echo $step ?>" value="<?php echo $current_amount ?>"
+					   default="<?php echo $default_amount ?>"
+					<?php $this->link( 'top_bottom_width' ) ?>
 					/>
+				px
+
 			</label>
 
 		<?php
