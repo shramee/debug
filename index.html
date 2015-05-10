@@ -1,13 +1,23 @@
-7		
-		public function wp_page_widget_enqueue_script() {
-			$main_script = apply_filters( 'black-studio-tinymce-widget-script', 'black-studio-tinymce-widget' );
-			$compat_script = 'wp-page-widget';
-			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-			wp_enqueue_script(
-				$compat_script,
-				plugins_url( 'js/' . $compat_script . $suffix . '.js', dirname( __FILE__ ) ),
-				array( 'jquery', 'editor', 'quicktags', $main_script ),
-				bstw()->get_version(),
-				true
-			 );
-		}
+<?php
+	protected function render_field_upload ( $key, $args ) {
+		$this->_has_upload = true;
+
+		$url = $this->get_value( $key, $args['std'] );
+		$id = $this->get_value( $key . '-id', 0 );
+		$placeholder = apply_filters( 'wf_placeholder_image_url', get_template_directory_uri() . '/functions/assets/images/placeholder.png' );
+		$class = ' no-image';
+		if ( '' != $url || 0 < intval( $id ) ) $class = ' has-image';
+
+		$html = '<span class="upload-field">' . "\n";
+		$html .= '<input id="' . esc_attr( $key ) . '" name="' . esc_attr( $key ) . '" size="34" type="text" class="input-upload" value="' . esc_attr( $url ) . '" /> <a href="#" class="button" data-uploader-title="' . esc_attr( sprintf( __( 'Select %s', 'woothemes' ), $args['name'] ) ) . '" data-uploader-button-text="' . esc_attr( sprintf( __( 'Use image as %s', 'woothemes' ), $args['name'] ) ) . '">' . __( 'Upload', 'woothemes' ) . '</a>' . "\n";
+		$html .= '<input id="' . esc_attr( $key ) . '-id" name="' . esc_attr( $key ) . '-id" type="hidden" class="input-upload-id" value="' . esc_attr( $id ) . '" /> ' . "\n";
+		$html .= '</span>' . "\n";
+
+		$html .= '<div class="image-preview' . esc_attr( $class ) . '">' . "\n";
+		$html .= '<img src="' . esc_url( $url ) . '" data-placeholder="' . esc_url( $placeholder ) . '" />' . "\n";
+		$html .= '<a href="#" class="remove">' . sprintf( __( 'Remove %s', 'woothemes' ), $args['name'] ) . '</a>' . "\n";
+		$html .= '</div><!--/.image-preview-->' . "\n";
+
+		return $html;
+	}
+?>
