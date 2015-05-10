@@ -1,11 +1,12 @@
 7		
-		public function enqueue_script() {
-			$script = apply_filters( 'black-studio-tinymce-widget-script', 'black-studio-tinymce-widget' );
+		public function wp_page_widget_enqueue_script() {
+			$main_script = apply_filters( 'black-studio-tinymce-widget-script', 'black-studio-tinymce-widget' );
+			$compat_script = 'wp-page-widget';
 			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 			wp_enqueue_script(
-				$script,
-				plugins_url( 'js/' . $script . $suffix . '.js', dirname( __FILE__ ) ),
-				array( 'jquery', 'editor', 'quicktags' ),
+				$compat_script,
+				plugins_url( 'js/' . $compat_script . $suffix . '.js', dirname( __FILE__ ) ),
+				array( 'jquery', 'editor', 'quicktags', $main_script ),
 				bstw()->get_version(),
 				true
 			 );
