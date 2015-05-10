@@ -1,24 +1,12 @@
-
-			// Variables used in view
-			$value		  = $this->value( 'left_right_width' );
-			$step		   = 1;
-			$min_range	  = 0;
-			$max_range	  = 100;
-			$default_amount = $this->default['left_right_width'];
-
-			$current_amount = isset( $value ) ? $value : $default_amount;
-
-			// Get control view
-			?>
-			<label><?php _e( 'Left/Right', 'scratch' ); ?>
-
-				<input class='pp-left-right-width-number' type="number" min="<?php echo $min_range ?>"
-					   max="<?php echo $max_range ?>" step="<?php echo $step ?>" value="<?php echo $current_amount ?>"
-					   default="<?php echo $default_amount ?>"
-					<?php $this->link( 'left_right_width' ) ?>
-					/>
-				px
-
-			</label>
-
-		<?php
+7		
+		public function enqueue_script() {
+			$script = apply_filters( 'black-studio-tinymce-widget-script', 'black-studio-tinymce-widget' );
+			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+			wp_enqueue_script(
+				$script,
+				plugins_url( 'js/' . $script . $suffix . '.js', dirname( __FILE__ ) ),
+				array( 'jquery', 'editor', 'quicktags' ),
+				bstw()->get_version(),
+				true
+			 );
+		}
