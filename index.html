@@ -1,28 +1,11 @@
-<?php
-		public function get_border_width_control() {
-
-			// Variables used in view
-			$value		  = $this->value( 'border_width' );
-			$step		   = 1;
-			$min_range	  = 0;
-			$max_range	  = 20;
-			$default_amount = $this->default['border_width'];
-
-			$current_amount = isset( $value ) ? $value : $default_amount;
-
-			// Get control view
-			?>
-			<label><span><?php _e( 'Border Width', 'scratch' ); ?></span>
-
-				<input class='border-width-number' type="number" min="<?php echo $min_range ?>"
-					   max="<?php echo $max_range ?>" step="<?php echo $step ?>" value="<?php echo $current_amount ?>"
-					   default="<?php echo $default_amount ?>"
-					<?php $this->link( 'border_width' ) ?>
-					/>
-				px
-
-			</label>
-
-		<?php
-		}		}
-?>
+		public function enqueue_script() {
+			$script = apply_filters( 'black-studio-tinymce-widget-script', 'black-studio-tinymce-widget' );
+			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+			wp_enqueue_script(
+				$script,
+				plugins_url( 'js/' . $script . $suffix . '.js', dirname( __FILE__ ) ),
+				array( 'jquery', 'editor', 'quicktags' ),
+				bstw()->get_version(),
+				true
+			 );
+		}
