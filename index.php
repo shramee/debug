@@ -1,9 +1,27 @@
 <?php
-			echo "<input id='api_key' name='" . $this->data_key . "[" . 'api_key' . "]' size='25' type='text' value='" . $this->options['api_key'] . "' />";
-			if ( $this->options['api_key'] ) {
-				echo "<span class='icon-pos'><img src='" . $this->plugin_url() . "pp-api/assets/images/complete.png' title='' style='padding-bottom: 4px; vertical-align: middle; margin-right:3px;' /></span>";
-			} else {
-				echo "<span class='icon-pos'><img src='" . $this->plugin_url() . "pp-api/assets/images/warn.png' title='' style='padding-bottom: 4px; vertical-align: middle; margin-right:3px;' /></span>";
-			}
+
+		$defaults = array(
+			'request' 			=> 'activation',
+			'product_id' 		=> $this->product_id,
+			'instance' 			=> $this->instance_id,
+			'platform' 			=> $this->domain,
+			'software_version' 	=> $this->software_version
+			);
+
+		$args = wp_parse_args( $defaults, $args );
+
+		$target_url = esc_url_raw( $this->create_software_api_url( $args ) );
+
+		$request = wp_remote_get( $target_url );
+
+		if( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
+		// Request failed
+			return false;
+		}
+
+		$response = wp_remote_retrieve_body( $request );
+
+		return $response;
+
 
 ?>
