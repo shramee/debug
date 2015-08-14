@@ -1,11 +1,11 @@
 <?php
 
 		$defaults = array(
-			'request' 			=> 'activation',
-			'product_id' 		=> $this->product_id,
-			'instance' 			=> $this->instance_id,
-			'platform' 			=> $this->domain,
-			'software_version' 	=> $this->software_version
+			'request' => 'activation',
+			'product_id' => $this->product_id,
+			'instance' => $this->instance_id,
+			'platform' => $this->domain,
+			'software_version' => $this->software_version
 			);
 
 		$args = wp_parse_args( $defaults, $args );
@@ -22,6 +22,4 @@
 		$response = wp_remote_retrieve_body( $request );
 
 		return $response;
-
-
 ?>
